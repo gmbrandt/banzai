@@ -1,12 +1,8 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import os
 import itertools
 
-from sqlalchemy.sql import func
-
 from banzai import dbs
-from banzai.utils import date_utils
 from banzai import logs
 from banzai.images import Image
 from banzai.utils import image_utils
@@ -25,7 +21,7 @@ class Stage(object):
     def stage_name(self):
         return '.'.join([__name__, self.__class__.__name__])
 
-    @abc.abstractproperty
+    @property
     def group_by_keywords(self):
         pass
 
