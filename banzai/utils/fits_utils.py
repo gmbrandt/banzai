@@ -46,9 +46,9 @@ def create_master_calibration_header(images):
 
     header['DATE-OBS'] = date_utils.date_obs_to_string(mean_dateobs)
 
-    header.add_history("Images combined to create master calibration image:")
-    for image in images:
-        header.add_history(image.filename)
+    header.add_comment("Images combined to create master calibration image:")
+    for i, image in enumerate(images):
+        header['IMCOM{i:03d}'.format(i=i)] = image.filename, 'ith Image combined to create this master calibration'
     return header
 
 
